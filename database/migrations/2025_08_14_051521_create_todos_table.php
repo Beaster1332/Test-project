@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string("title");
             $table->text("description");
-//            $table-> todo:: здесь сделать статус, либо типизировать, либо сделать числовым 0, 1, 2
+            $table->enum("status", ["new", "inWork", "completed"]);
             $table->timestamps();
         });
     }
