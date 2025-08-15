@@ -14,7 +14,7 @@ class TodoController extends Controller
      */
     public function index()
     {
-        return "Haha poluchilos";
+        return Todo::all();
     }
 
     /**
@@ -22,7 +22,7 @@ class TodoController extends Controller
      */
     public function store(StoreTodoRequest $request)
     {
-        //
+        return Todo::create($request->all());
     }
 
     /**
@@ -30,7 +30,7 @@ class TodoController extends Controller
      */
     public function show(Todo $todo)
     {
-        //
+        return $todo;
     }
 
     /**
@@ -38,7 +38,9 @@ class TodoController extends Controller
      */
     public function update(UpdateTodoRequest $request, Todo $todo)
     {
-        //
+        $todo->update($request->all());
+
+        return $todo;
     }
 
     /**
@@ -46,6 +48,10 @@ class TodoController extends Controller
      */
     public function destroy(Todo $todo)
     {
-        //
+        $todo->delete();
+
+        return response()->json([
+            "message" => "Deletion successful"
+        ]);
     }
 }
