@@ -10,4 +10,4 @@ Route::get('/user', function (Request $request) {
 
 //Route::get("/todos", [TodoController::class, "index"]);
 
-Route::apiResource("/todos", TodoController::class);
+Route::apiResource("/todos", TodoController::class)->middleware(["throttle:api", "auth:sanctum"]);
